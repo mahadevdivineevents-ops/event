@@ -32,7 +32,7 @@ const galleryImages = [
   'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80',
   'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80',
   'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80',
-  'https://images.unsplash.com/photo-1591604021695-0c69b7c05981?w=600&q=80',
+  'uploads/video.png',
   'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&q=80',
   'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80',
 ];
@@ -239,7 +239,7 @@ export default function Home() {
                   'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&q=80',
                   'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&q=80',
                   'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&q=80',
-                  'https://images.unsplash.com/photo-1591604021695-0c69b7c05981?w=400&q=80',
+                  'uploads/haldi2.png',
                 ].map((src, i) => (
                   <div key={i} className={`gallery-item rounded-sm overflow-hidden ${i === 0 ? 'row-span-1' : ''}`}
                     style={{ aspectRatio: i % 2 === 0 ? '3/4' : '4/3', border: '1px solid rgba(212,160,23,0.2)' }}>
@@ -286,30 +286,33 @@ export default function Home() {
       {/* ── TESTIMONIALS ── */}
       <section className="py-24 px-6" style={{ background: 'linear-gradient(180deg, #0d0800, #0a0a0a)' }}>
         <div className="max-w-6xl mx-auto">
-          <AnimatedSection className="text-center mb-14">
+          <AnimatedSection className="text-center mb-16">
             <p className="section-subtitle mb-3">Happy Couples</p>
-            <div className="gold-divider mb-4"><span className="ornament">✦</span></div>
-            <h2 className="section-title text-gold-gradient">Love Stories We've Told</h2>
+            <div className="gold-divider mb-6"><span className="ornament">✦</span></div>
+            <h2 className="section-title text-gold-gradient mb-4">Love Stories We've Told</h2>
+            <p className="font-sans text-sm text-amber-100/50 max-w-2xl mx-auto">Hear from the couples whose celebrations we've had the honor of creating.</p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
             {testimonials.map((t, i) => (
               <AnimatedSection key={i} style={{ transitionDelay: `${i * 0.15}s` }}>
-                <div className="luxury-card p-8 h-full flex flex-col">
-                  <div className="flex gap-1 mb-5">
-                    {[...Array(t.rating)].map((_, j) => <FaStar key={j} className="text-amber-400" size={14} />)}
+                <div className="testimonial-card group h-full flex flex-col">
+                  <div className="flex gap-1 mb-6">
+                    {[...Array(t.rating)].map((_, j) => <FaStar key={j} className="text-amber-400 drop-shadow-lg" size={16} />)}
                   </div>
-                  <p className="font-serif italic text-amber-100/70 text-base leading-relaxed flex-1 mb-6">
-                    "{t.text}"
+                  <p className="font-serif italic text-amber-100/75 text-base leading-relaxed flex-1 mb-8 relative">
+                    <span className="text-amber-500/40 text-3xl absolute -top-2 -left-2">"</span>
+                    {t.text}
+                    <span className="text-amber-500/40 text-3xl absolute -bottom-6 -right-2">"</span>
                   </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center"
+                  <div className="flex items-center gap-3 pt-4 border-t border-amber-500/10">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-lg transition-all duration-300 group-hover:shadow-xl"
                       style={{ background: 'linear-gradient(135deg, #b8860b, #ffd700)' }}>
-                      <FaHeart className="text-black" size={14} />
+                      <FaHeart className="text-black text-lg" />
                     </div>
                     <div>
-                      <div className="font-display text-sm text-amber-300">{t.name}</div>
-                      <div className="font-sans text-xs text-amber-400/40 tracking-wide">Happy Clients</div>
+                      <div className="font-display text-sm font-semibold text-amber-300">{t.name}</div>
+                      <div className="font-sans text-xs text-amber-400/50 tracking-widest uppercase">Happy Clients</div>
                     </div>
                   </div>
                 </div>

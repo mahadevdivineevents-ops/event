@@ -56,7 +56,7 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative px-4 py-2 text-xs font-sans font-medium tracking-widest uppercase transition-all duration-300 group ${
                     link.isAdmin
-                      ? 'btn-gold ml-3 !py-2 !px-4'
+                      ? 'btn-gold ml-3 py-2! px-4!'
                       : isActive
                       ? 'text-amber-300'
                       : 'text-amber-100/70 hover:text-amber-300'
@@ -66,7 +66,7 @@ export default function Navbar() {
                     <>
                       {link.label}
                       <span
-                        className={`absolute bottom-0 left-0 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent transition-all duration-300 ${
+                        className={`absolute bottom-0 left-0 h-px bg-linear-to-r from-transparent via-amber-400 to-transparent transition-all duration-300 ${
                           isActive ? 'w-full opacity-100' : 'w-0 group-hover:w-full opacity-0 group-hover:opacity-100'
                         }`}
                       />

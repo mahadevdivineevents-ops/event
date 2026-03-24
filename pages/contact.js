@@ -67,9 +67,9 @@ export default function Contact() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-16 px-6" style={{ background: '#0a0a0a' }}>
+      <section className="py-20 px-6" style={{ background: '#0a0a0a' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
             {[
               {
                 icon: FaPhone,
@@ -105,23 +105,23 @@ export default function Contact() {
               },
             ].map((card, i) => (
               <AnimatedSection key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
-                <div className="luxury-card p-7 h-full flex flex-col items-center text-center">
-                  <div className="w-14 h-14 rounded-full flex items-center justify-center mb-5"
+                <div className="contact-card group">
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mb-5 mx-auto transition-all duration-300 group-hover:scale-110"
                     style={{
                       background: card.green ? 'rgba(37,211,102,0.15)' : 'rgba(212,160,23,0.15)',
-                      border: card.green ? '1px solid rgba(37,211,102,0.3)' : '1px solid rgba(212,160,23,0.3)',
+                      border: card.green ? '1px solid rgba(37,211,102,0.35)' : '1px solid rgba(212,160,23,0.35)',
                     }}>
-                    <card.icon className={card.green ? 'text-green-400' : 'text-amber-400'} size={22} />
+                    <card.icon className={card.green ? 'text-green-400 text-2xl' : 'text-amber-400 text-2xl'} />
                   </div>
-                  <h3 className="font-display text-base font-semibold text-amber-300 mb-3">{card.title}</h3>
-                  <p className="font-sans text-sm text-amber-100/70 mb-1">{card.line1}</p>
-                  <p className="font-sans text-xs text-amber-100/40 mb-4">{card.line2}</p>
+                  <h3 className="font-display text-lg font-semibold text-amber-300 mb-3 group-hover:text-amber-200 transition-colors">{card.title}</h3>
+                  <p className="font-sans text-sm text-amber-100/75 font-medium mb-1">{card.line1}</p>
+                  <p className="font-sans text-xs text-amber-100/50 mb-5">{card.line2}</p>
                   {card.href && card.action && (
                     <a
                       href={card.href}
                       target={card.href.startsWith('http') ? '_blank' : undefined}
                       rel="noopener noreferrer"
-                      className={`mt-auto text-xs font-sans tracking-widest uppercase transition-all duration-300 ${
+                      className={`inline-flex items-center gap-1 text-xs font-sans font-semibold tracking-widest uppercase transition-all duration-300 hover:gap-2 ${
                         card.green ? 'text-green-400 hover:text-green-300' : 'text-amber-400 hover:text-amber-300'
                       }`}
                     >
@@ -134,30 +134,30 @@ export default function Contact() {
           </div>
 
           {/* Form + Map Grid */}
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-14">
             {/* Contact Form */}
             <AnimatedSection>
-              <div className="luxury-card p-8 md:p-10">
-                <h2 className="font-display text-2xl font-bold text-gold-gradient mb-2">Send a Message</h2>
-                <p className="font-sans text-sm text-amber-100/40 mb-8">Fill in your details and we'll get back to you shortly.</p>
+              <div className="admin-card">
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-gold-gradient mb-2">Send a Message</h2>
+                <p className="font-sans text-sm text-amber-100/50 mb-10">Fill in your details and we'll get back to you shortly.</p>
 
                 {status === 'success' ? (
-                  <div className="text-center py-12">
-                    <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
-                      style={{ background: 'rgba(212,160,23,0.2)', border: '1px solid rgba(212,160,23,0.4)' }}>
-                      <FaPaperPlane className="text-amber-400" size={24} />
+                  <div className="text-center py-16">
+                    <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse"
+                      style={{ background: 'linear-gradient(135deg,rgba(212,160,23,0.3),rgba(255,215,0,0.1))', border: '2px solid rgba(212,160,23,0.5)' }}>
+                      <FaPaperPlane className="text-amber-400 text-3xl" />
                     </div>
-                    <h3 className="font-display text-xl text-amber-300 mb-3">Message Sent!</h3>
-                    <p className="font-sans text-sm text-amber-100/50">Thank you for reaching out. We'll contact you within 2 hours.</p>
-                    <button onClick={() => setStatus('idle')} className="btn-gold mt-6">Send Another</button>
+                    <h3 className="font-display text-2xl text-amber-300 mb-3">Message Sent!</h3>
+                    <p className="font-sans text-sm text-amber-100/60 mb-8">Thank you for reaching out. We'll contact you within 2 hours and open WhatsApp if available.</p>
+                    <button onClick={() => setStatus('idle')} className="btn-gold">Send Another</button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="font-sans text-xs text-amber-400/60 tracking-widest uppercase mb-2 block">Your Name *</label>
+                        <label className="font-sans text-xs text-amber-400/70 tracking-widest uppercase font-semibold mb-3 block">Your Name *</label>
                         <input
-                          className="luxury-input"
+                          className="admin-input"
                           name="name"
                           value={form.name}
                           onChange={handleChange}
@@ -166,9 +166,9 @@ export default function Contact() {
                         />
                       </div>
                       <div>
-                        <label className="font-sans text-xs text-amber-400/60 tracking-widest uppercase mb-2 block">Phone Number *</label>
+                        <label className="font-sans text-xs text-amber-400/70 tracking-widest uppercase font-semibold mb-3 block">Phone Number *</label>
                         <input
-                          className="luxury-input"
+                          className="admin-input"
                           name="phone"
                           value={form.phone}
                           onChange={handleChange}
@@ -178,9 +178,9 @@ export default function Contact() {
                       </div>
                     </div>
                     <div>
-                      <label className="font-sans text-xs text-amber-400/60 tracking-widest uppercase mb-2 block">Email Address</label>
+                      <label className="font-sans text-xs text-amber-400/70 tracking-widest uppercase font-semibold mb-3 block">Email Address</label>
                       <input
-                        className="luxury-input"
+                        className="admin-input"
                         type="email"
                         name="email"
                         value={form.email}
@@ -189,13 +189,12 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label className="font-sans text-xs text-amber-400/60 tracking-widest uppercase mb-2 block">Service Interested In</label>
+                      <label className="font-sans text-xs text-amber-400/70 tracking-widest uppercase font-semibold mb-3 block">Service Interested In</label>
                       <select
-                        className="luxury-input"
+                        className="admin-input"
                         name="service"
                         value={form.service}
                         onChange={handleChange}
-                        style={{ background: 'rgba(255,255,255,0.03)', cursor: 'pointer' }}
                       >
                         <option value="" style={{ background: '#1a1a1a' }}>Select a Service</option>
                         {['Wedding Planning','Haldi Mehendi Decoration','Engagement Ceremony','Birthday Decoration','Bridal Makeup','Wedding Car Booking','DJ & Sound System','Photography','Catering','Event Management','Pre Wedding Photoshoot'].map(s => (
@@ -204,29 +203,29 @@ export default function Contact() {
                       </select>
                     </div>
                     <div>
-                      <label className="font-sans text-xs text-amber-400/60 tracking-widest uppercase mb-2 block">Your Message *</label>
+                      <label className="font-sans text-xs text-amber-400/70 tracking-widest uppercase font-semibold mb-3 block">Your Message *</label>
                       <textarea
-                        className="luxury-input resize-none"
+                        className="admin-input resize-none"
                         name="message"
                         value={form.message}
                         onChange={handleChange}
                         placeholder="Tell us about your event, date, venue ideas..."
-                        rows={4}
+                        rows={5}
                         required
                       />
                     </div>
                     {status === 'error' && (
-                      <p className="font-sans text-xs text-red-400">Something went wrong. Please try WhatsApp or call us directly.</p>
+                      <p className="font-sans text-sm text-red-400/80 bg-red-400/10 border border-red-400/30 px-4 py-3">Something went wrong. Please try WhatsApp or call us directly.</p>
                     )}
                     <button
                       type="submit"
-                      className="btn-gold w-full flex items-center justify-center gap-2"
+                      className="btn-gold w-full flex items-center justify-center gap-2 h-12"
                       disabled={status === 'sending'}
                     >
                       {status === 'sending' ? (
                         <><span className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" /> Sending...</>
                       ) : (
-                        <><FaPaperPlane size={14} /> Send Message</>
+                        <><FaPaperPlane size={16} /> Send Message</>
                       )}
                     </button>
                   </form>
@@ -256,21 +255,21 @@ export default function Contact() {
                   <h3 className="font-display text-xl font-bold text-amber-300 mb-5">Visit Our Office</h3>
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">
-                      <FaMapMarkerAlt className="text-amber-500 mt-1 flex-shrink-0" size={16} />
+                      <FaMapMarkerAlt className="text-amber-500 mt-1 shrink-0" size={16} />
                       <div>
                         <p className="font-sans text-sm font-medium text-amber-200">Address</p>
                         <p className="font-sans text-sm text-amber-100/50 mt-1">Barhuliya, Arer, Madhubani-847222</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <FaPhone className="text-amber-500 mt-1 flex-shrink-0" size={16} />
+                      <FaPhone className="text-amber-500 mt-1 shrink-0" size={16} />
                       <div>
                         <p className="font-sans text-sm font-medium text-amber-200">Phone</p>
                         <a href="tel:+917296095910" className="font-sans text-sm text-amber-100/50 hover:text-amber-300 transition-colors">+91 7296095910</a>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <FaWhatsapp className="text-amber-500 mt-1 flex-shrink-0" size={16} />
+                      <FaWhatsapp className="text-amber-500 mt-1 shrink-0" size={16} />
                       <div>
                         <p className="font-sans text-sm font-medium text-amber-200">WhatsApp</p>
                         <a href="https://wa.me/917296095910" target="_blank" rel="noopener noreferrer" className="font-sans text-sm text-amber-100/50 hover:text-amber-300 transition-colors">

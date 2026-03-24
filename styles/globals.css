@@ -94,7 +94,7 @@ img{max-width:100%;display:block}
 .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.92) 0%,transparent 55%);opacity:0;transition:opacity 0.35s ease;display:flex;align-items:flex-end;padding:1.5rem}
 .gallery-item:hover .gallery-overlay{opacity:1}
 
-.input{width:100%;background:rgba(255,255,255,0.025);border:1px solid rgba(200,148,10,0.22);color:#e8d5a3;padding:0.9rem 1.25rem;font-family:'Jost',sans-serif;font-size:0.9rem;font-weight:300;transition:all 0.3s ease;outline:none;border-radius:0;-webkit-appearance:none}
+.input{width:100%;background:rgba(255,255,255,0.025);border:1px solid rgba(200,148,10,0.22);color:#e8d5a3;padding:0.9rem 1.25rem;font-family:'Jost',sans-serif;font-size:0.9rem;font-weight:300;transition:all 0.3s ease;outline:none;border-radius:0;appearance:none;-webkit-appearance:none}
 .input:focus{border-color:rgba(255,215,0,0.55);background:rgba(255,215,0,0.02);box-shadow:0 0 0 3px rgba(200,148,10,0.08)}
 .input::placeholder{color:rgba(200,148,10,0.3);font-weight:300}
 select.input{cursor:pointer}
@@ -185,10 +185,10 @@ textarea.input{resize:vertical;min-height:130px}
 .navbar-glass{background:rgba(6,6,6,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(200,148,10,0.18);box-shadow:0 4px 30px rgba(0,0,0,0.5)}
 
 /* Old floating buttons */
-.whatsapp-float{position:fixed;bottom:5.5rem;right:1.5rem;z-index:200;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);transition:all 0.3s ease;animation:pulse-wa 2.5s infinite;text-decoration:none}
-.whatsapp-float:hover{transform:scale(1.12)}
-.call-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;width:54px;height:54px;background:linear-gradient(135deg,#8B6508,#ffd700);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,148,10,0.35);transition:all 0.3s ease;animation:pulse-call 2.5s infinite 0.5s;text-decoration:none}
-.call-float:hover{transform:scale(1.12)}
+.whatsapp-float{position:fixed;bottom:5.5rem;right:1.5rem;z-index:200;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,0.45),0 0 40px rgba(37,211,102,0.15);transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);animation:pulse-wa 2.5s infinite;text-decoration:none;border:2px solid rgba(255,255,255,0.1);backdrop-filter:blur(8px)}
+.whatsapp-float:hover{transform:scale(1.18) translateY(-4px);box-shadow:0 12px 32px rgba(37,211,102,0.6),0 0 60px rgba(37,211,102,0.25);border-color:rgba(255,255,255,0.3)}
+.call-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;width:56px;height:56px;background:linear-gradient(135deg,#8B6508,#ffd700);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(200,148,10,0.45),0 0 40px rgba(255,215,0,0.15);transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);animation:pulse-call 2.5s infinite 0.5s;text-decoration:none;border:2px solid rgba(255,255,255,0.1);backdrop-filter:blur(8px)}
+.call-float:hover{transform:scale(1.18) translateY(-4px);box-shadow:0 12px 32px rgba(200,148,10,0.6),0 0 60px rgba(255,215,0,0.25);border-color:rgba(255,255,255,0.3)}
 
 /* Old input */
 .luxury-input{width:100%;background:rgba(255,255,255,0.025);border:1px solid rgba(200,148,10,0.22);color:#e8d5a3;padding:0.9rem 1.25rem;font-family:'Jost',sans-serif;font-size:0.9rem;font-weight:300;transition:all 0.3s ease;outline:none;border-radius:0}
@@ -207,6 +207,122 @@ textarea.luxury-input{resize:vertical;min-height:130px}
 .max-w-4xl{max-width:56rem;margin-left:auto;margin-right:auto}
 .max-w-2xl{max-width:42rem;margin-left:auto;margin-right:auto}
 .max-w-xl{max-width:36rem;margin-left:auto;margin-right:auto}
+
+/* Footer animations and enhancements */
+@keyframes footer-fade-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+footer > div:first-child > div > div > div{animation:footer-fade-in 0.8s ease-out forwards}
+footer > div:first-child > div > div > div:nth-child(1){animation-delay:0.1s}
+footer > div:first-child > div > div > div:nth-child(2){animation-delay:0.2s}
+footer > div:first-child > div > div > div:nth-child(3){animation-delay:0.3s}
+footer > div:first-child > div > div > div:nth-child(4){animation-delay:0.4s}
+
+@keyframes shimmer{0%{background-position:0% center}50%{background-position:100% center}100%{background-position:0% center}}
+
+.bg-gradient-to-r{background-size:200% auto;animation:shimmer 6s ease-in-out infinite}
+
+/* Responsive adjustments */
+@media(max-width:640px){
+  .whatsapp-float,.call-float{width:50px;height:50px;bottom:4rem;right:1rem}
+  .call-float{bottom:0.75rem}
+  footer{padding-left:0.5rem;padding-right:0.5rem}
+}
+
+@media(max-width:768px){
+  footer > div:first-child > div{gap:2rem}
+}
+
+/* ========== ENHANCED PAGE STYLING ========== */
+
+/* Section styling improvements */
+.section-subtitle{font-family:'Jost',sans-serif;font-size:0.68rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#c8940a;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.2;letter-spacing:-0.01em}
+
+/* Luxury card enhancement */
+.luxury-card{background:linear-gradient(135deg,rgba(15,10,0,0.8),rgba(20,15,5,0.8));border:1px solid rgba(212,160,23,0.2);position:relative;overflow:hidden;transition:all 0.45s cubic-bezier(0.4,0,0.2,1);backdrop-filter:blur(10px)}
+.luxury-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#c8940a,transparent);opacity:0;transition:opacity 0.45s ease}
+.luxury-card:hover{border-color:rgba(212,160,23,0.45);background:linear-gradient(135deg,rgba(25,18,0,0.9),rgba(30,22,5,0.9));box-shadow:0 25px 70px rgba(0,0,0,0.6),0 0 50px rgba(212,160,23,0.1),inset 0 1px 0 rgba(255,215,0,0.08);transform:translateY(-10px)}
+.luxury-card:hover::before{opacity:1}
+
+/* Gold divider */
+.gold-divider{display:flex;align-items:center;gap:1rem;justify-content:center}
+.gold-divider .ornament{color:#c8940a;font-size:0.9rem;letter-spacing:0.3em}
+.gold-divider span:not(.ornament){height:1px;flex:1;background:linear-gradient(90deg,transparent,#c8940a 50%,transparent)}
+
+/* Service tag */
+.service-tag{display:inline-block;padding:0.35rem 1rem;border:1px solid rgba(200,148,10,0.4);font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#c8940a;background:rgba(200,148,10,0.05);transition:all 0.3s ease}
+.service-tag:hover{background:rgba(200,148,10,0.12);border-color:rgba(212,160,23,0.6)}
+
+/* Button styling */
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all 0.35s cubic-bezier(0.4,0,0.2,1);white-space:nowrap;border:none;outline:none;background:linear-gradient(135deg,#8B6508 0%,#c8940a 30%,#ffd700 60%,#c8940a 80%,#8B6508 100%);background-size:200% auto;color:#0a0800;padding:0.9rem 2.5rem;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);box-shadow:0 4px 20px rgba(200,148,10,0.3)}
+.btn-gold:hover{background-position:right center;box-shadow:0 8px 40px rgba(255,215,0,0.5);transform:translateY(-3px)}
+
+.btn-outline-gold{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all 0.35s ease;white-space:nowrap;border:none;outline:none;background:transparent;color:#ffd700;padding:0.88rem 2.48rem;border:1px solid rgba(255,215,0,0.4);position:relative;overflow:hidden}
+.btn-outline-gold::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,148,10,0.15),rgba(255,215,0,0.08));opacity:0;transition:opacity 0.35s ease}
+.btn-outline-gold:hover::before{opacity:1}
+.btn-outline-gold:hover{border-color:rgba(255,215,0,0.8);box-shadow:0 0 25px rgba(255,215,0,0.2),inset 0 0 25px rgba(255,215,0,0.05);transform:translateY(-3px)}
+
+/* Testimonial card enhancement */
+.testimonial-card{background:linear-gradient(135deg,rgba(15,10,0,0.6),rgba(20,15,5,0.6));border:1px solid rgba(212,160,23,0.25);padding:2rem;border-radius:0;position:relative;overflow:hidden;transition:all 0.45s cubic-bezier(0.4,0,0.2,1)}
+.testimonial-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 30%,rgba(212,160,23,0.1),transparent);opacity:0;transition:opacity 0.45s ease}
+.testimonial-card:hover{border-color:rgba(212,160,23,0.5);background:linear-gradient(135deg,rgba(25,18,0,0.8),rgba(30,22,5,0.8));box-shadow:0 20px 50px rgba(0,0,0,0.5),0 0 40px rgba(212,160,23,0.08);transform:translateY(-8px)}
+.testimonial-card:hover::before{opacity:1}
+
+/* Admin form styling */
+.admin-card{background:linear-gradient(135deg,rgba(15,10,0,0.7),rgba(20,15,5,0.7));border:1px solid rgba(212,160,23,0.2);padding:2rem;border-radius:0;transition:all 0.45s ease}
+.admin-card:hover{border-color:rgba(212,160,23,0.45);box-shadow:0 15px 40px rgba(0,0,0,0.5)}
+
+/* Input styling improvements */
+.admin-input{width:100%;background:rgba(255,255,255,0.02);border:1px solid rgba(200,148,10,0.25);color:#e8d5a3;padding:0.85rem 1rem;font-family:'Jost',sans-serif;font-size:0.85rem;font-weight:300;transition:all 0.3s ease;outline:none;appearance:none;-webkit-appearance:none}
+.admin-input:focus{border-color:rgba(255,215,0,0.6);background:rgba(255,215,0,0.03);box-shadow:0 0 0 3px rgba(200,148,10,0.1)}
+.admin-input::placeholder{color:rgba(200,148,10,0.35)}
+
+/* Gallery grid enhancements */
+.gallery-grid{display:grid;gap:0.75rem;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.gallery-item{position:relative;overflow:hidden;cursor:pointer;transition:all 0.45s ease}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);display:block}
+.gallery-item:hover img{transform:scale(1.12) rotate(0.5deg)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.95) 0%,transparent 55%);opacity:0;transition:opacity 0.35s ease;display:flex;align-items:flex-end;padding:1.5rem;backdrop-filter:blur(4px)}
+.gallery-item:hover .gallery-overlay{opacity:1}
+
+/* Contact card styling */
+.contact-card{background:linear-gradient(135deg,rgba(15,10,0,0.5),rgba(20,15,5,0.5));border:1px solid rgba(212,160,23,0.2);padding:2rem 1.5rem;text-align:center;transition:all 0.45s ease;position:relative;overflow:hidden}
+.contact-card::after{content:'';position:absolute;top:-50%;right:-50%;width:100px;height:100px;background:radial-gradient(circle,rgba(212,160,23,0.15),transparent);border-radius:50%;opacity:0;transition:opacity 0.45s ease}
+.contact-card:hover{border-color:rgba(212,160,23,0.45);background:linear-gradient(135deg,rgba(25,18,0,0.7),rgba(30,22,5,0.7));box-shadow:0 15px 40px rgba(0,0,0,0.5),0 0 30px rgba(212,160,23,0.08);transform:translateY(-5px)}
+.contact-card:hover::after{opacity:1;top:-25%;right:-25%}
+
+/* Enhanced animations */
+@keyframes slideInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInScale{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+@keyframes glow-pulse{0%,100%{box-shadow:0 0 20px rgba(212,160,23,0.3)}50%{box-shadow:0 0 40px rgba(212,160,23,0.6)}}
+
+.animate-on-scroll{animation:slideInUp 0.8s ease forwards}
+.animate-on-scroll.visible{animation-play-state:running}
+
+/* Responsive improvements */
+@media(max-width:1024px){
+  .section-title{font-size:clamp(1.5rem,4vw,2.8rem)}
+  .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+}
+
+@media(max-width:768px){
+  .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:0.5rem}
+  .btn-gold,.btn-outline-gold{padding:0.8rem 1.8rem;font-size:0.65rem}
+  .luxury-card{padding:1.5rem}
+  .contact-card{padding:1.5rem 1rem}
+}
+
+@media(max-width:640px){
+  .section-title{font-size:clamp(1.2rem,3vw,2rem)}
+  .section-subtitle{font-size:0.6rem}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Scrollbar styling */
+.overflow-x-auto::-webkit-scrollbar{height:6px}
+.overflow-x-auto::-webkit-scrollbar-track{background:transparent}
+.overflow-x-auto::-webkit-scrollbar-thumb{background:rgba(212,160,23,0.4);border-radius:3px}
+.overflow-x-auto::-webkit-scrollbar-thumb:hover{background:rgba(212,160,23,0.6)}
 
 /* Old fadeInUp animation */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}

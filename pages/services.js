@@ -12,8 +12,8 @@ const SERVICES = [
     description: 'From the first meeting to the final farewell, our expert wedding planners craft every detail of your special day. We handle venue selection, vendor coordination, decor, catering, and more — so you can focus on the joy of the moment.',
     features: ['Venue selection & booking', 'Full decor & theme design', 'Vendor coordination', 'Day-of event management', 'Guest management'],
     images: [
-      'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80',
-      'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80',
+      'uploads/wedpa.png',
+      'uploads/weddingp.png',
     ],
   },
   {
@@ -23,8 +23,8 @@ const SERVICES = [
     description: 'Celebrate the beautiful traditional ceremonies with our vibrant, colourful decorations. We create authentic and Instagram-worthy setups for Haldi and Mehendi functions that bring together tradition and modern aesthetics.',
     features: ['Floral backdrops & stages', 'Traditional props & setup', 'Marigold flower arrangements', 'Photography-ready setups', 'Customised colour themes'],
     images: [
-      'https://images.unsplash.com/photo-1591604021695-0c69b7c05981?w=600&q=80',
-      'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&q=80',
+      'uploads/haldi.png',
+      'uploads/haldi2.png',
     ],
   },
   {
@@ -35,7 +35,7 @@ const SERVICES = [
     features: ['Ring ceremony stage design', 'Romantic lighting setups', 'Premium floral décor', 'Cake & dessert table', 'Photo booth & backdrops'],
     images: [
       'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80',
-      'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80',
+      'uploads/ring.png',
     ],
   },
   {
@@ -56,8 +56,8 @@ const SERVICES = [
     description: 'Look and feel absolutely stunning on your special day with our expert bridal makeup artists. We offer complete bridal beauty packages that include traditional and contemporary styles tailored to your skin tone and preferences.',
     features: ['Traditional & contemporary looks', 'HD airbrush makeup', 'Hair styling & setting', 'Full bridal trousseau help', 'Pre-wedding trial session'],
     images: [
-      'https://images.unsplash.com/photo-1487530811015-780f1b92fb3c?w=600&q=80',
-      'https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=600&q=80',
+      'uploads/makeup.png',
+      'uploads/makeup2.png',
     ],
   },
   {
@@ -67,8 +67,9 @@ const SERVICES = [
     description: 'Arrive in style with our exclusive range of decorated wedding cars. From vintage classics to modern luxury vehicles, we provide the perfect chariot for the couple with elegant floral decorations and professional drivers.',
     features: ['Vintage & luxury car fleet', 'Custom floral decoration', 'Chauffeur-driven service', 'Airport & venue transfers', 'Baraat procession vehicles'],
     images: [
-      'https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=600&q=80',
-      'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&q=80',
+      'uploads/carBook2.png',
+      'uploads/car Booking.png',
+      
     ],
   },
   {
@@ -78,7 +79,7 @@ const SERVICES = [
     description: 'Set the perfect mood with our professional DJ services and state-of-the-art sound systems. Our experienced DJs read the crowd and mix the perfect soundtrack for every moment of your celebration — from emotional first dances to high-energy dance floors.',
     features: ['Professional DJ & MC', 'Premium sound systems', 'LED dance floors & lighting', 'Custom playlist curation', 'Live music integration'],
     images: [
-      'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80',
+      'uploads/DJ sound.png',
       'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&q=80',
     ],
   },
@@ -100,7 +101,7 @@ const SERVICES = [
     description: 'Delight your guests with exquisite culinary experiences. From traditional Indian feasts to multi-cuisine spreads, our expert chefs craft menus that are as memorable as the occasion. We handle everything from live counters to elaborate buffets.',
     features: ['Multi-cuisine menus', 'Live food stations', 'Dessert & sweet counters', 'Bar & beverage service', 'Dietary accommodations'],
     images: [
-      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80',
+      'uploads/catring.png',
       'https://images.unsplash.com/photo-1555244162-803834f70033?w=600&q=80',
     ],
   },
@@ -122,7 +123,7 @@ const SERVICES = [
     description: 'Celebrate your journey together with a stunning pre-wedding photoshoot. We scout breathtaking locations, handle styling, and create a cinematic story that perfectly captures your bond before the big day.',
     features: ['Location scouting & booking', 'Outfit & styling guidance', 'Creative concept design', 'Professional editing', 'Teaser videos & reels'],
     images: [
-      'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=600&q=80',
+      'uploads/preWedding.png',
       'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80',
     ],
   },
@@ -167,20 +168,21 @@ export default function Services() {
 
       {/* Services List */}
       <section className="py-16 px-6" style={{ background: '#0a0a0a' }}>
-        <div className="max-w-7xl mx-auto space-y-20">
+        <div className="max-w-7xl mx-auto space-y-24">
           {SERVICES.map((svc, i) => (
             <AnimatedSection key={svc.id} style={{ transitionDelay: '0.1s' }}>
-              <div className={`grid lg:grid-cols-2 gap-12 items-center ${i % 2 !== 0 ? 'lg:grid-flow-dense' : ''}`}>
+              <div className={`grid lg:grid-cols-2 gap-14 items-center group ${i % 2 !== 0 ? 'lg:grid-flow-dense' : ''}`}>
                 {/* Images */}
-                <div className={`grid grid-cols-2 gap-3 ${i % 2 !== 0 ? 'lg:col-start-2' : ''}`}>
+                <div className={`grid grid-cols-2 gap-4 ${i % 2 !== 0 ? 'lg:col-start-2' : ''}`}>
                   {svc.images.map((src, j) => (
                     <div
                       key={j}
-                      className="gallery-item overflow-hidden"
+                      className="gallery-item overflow-hidden transition-all duration-500 hover:shadow-2xl"
                       style={{
                         aspectRatio: j === 0 ? '3/4' : '4/3',
-                        border: '1px solid rgba(212,160,23,0.2)',
+                        border: '1px solid rgba(212,160,23,0.25)',
                         marginTop: j === 1 ? '2rem' : '0',
+                        borderRadius: '4px'
                       }}
                     >
                       <img src={src} alt={svc.title} className="w-full h-full object-cover" loading="lazy" />
@@ -190,28 +192,28 @@ export default function Services() {
 
                 {/* Content */}
                 <div className={i % 2 !== 0 ? 'lg:col-start-1 lg:row-start-1' : ''}>
-                  <span className="service-tag mb-4 inline-block">{svc.subtitle}</span>
-                  <h2 className="font-display text-3xl md:text-4xl font-bold text-gold-gradient mb-4">{svc.title}</h2>
+                  <span className="service-tag mb-5 inline-block transition-all duration-300 group-hover:bg-amber-500/20">{svc.subtitle}</span>
+                  <h2 className="font-display text-3xl md:text-4xl font-bold text-gold-gradient mb-5 transition-all duration-300 group-hover:scale-[1.02] origin-left">{svc.title}</h2>
                   <div style={{ height: '2px', width: '60px', background: 'linear-gradient(90deg, #d4a017, transparent)', marginBottom: '1.5rem' }} />
-                  <p className="font-sans text-sm text-amber-100/60 leading-relaxed mb-6">{svc.description}</p>
-                  <ul className="space-y-2 mb-8">
+                  <p className="font-sans text-sm text-amber-100/65 leading-relaxed mb-7">{svc.description}</p>
+                  <ul className="space-y-3 mb-10">
                     {svc.features.map((f, j) => (
-                      <li key={j} className="flex items-center gap-3 font-sans text-sm text-amber-100/70">
-                        <span className="text-amber-500 text-xs flex-shrink-0">◆</span>
+                      <li key={j} className="flex items-start gap-3 font-sans text-sm text-amber-100/70 transition-all duration-300 hover:text-amber-200 hover:translate-x-1">
+                        <span className="text-amber-500 text-xs mt-1 shrink-0">◆</span>
                         {f}
                       </li>
                     ))}
                   </ul>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-4">
                     <a
                       href={`https://wa.me/917296095910?text=Hello%2C%20I%20am%20interested%20in%20${encodeURIComponent(svc.title)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-gold flex items-center gap-2 no-underline"
+                      className="btn-gold flex items-center gap-2 no-underline transition-all duration-300 hover:shadow-lg"
                     >
                       <FaWhatsapp size={16} /> Book Now
                     </a>
-                    <Link href="/contact" className="btn-outline-gold flex items-center gap-2 no-underline">
+                    <Link href="/contact" className="btn-outline-gold flex items-center gap-2 no-underline transition-all duration-300 hover:shadow-lg">
                       Get Quote <FaArrowRight size={12} />
                     </Link>
                   </div>
@@ -220,7 +222,7 @@ export default function Services() {
 
               {/* Divider */}
               {i < SERVICES.length - 1 && (
-                <div className="mt-16" style={{ borderBottom: '1px solid rgba(212,160,23,0.1)' }} />
+                <div className="mt-20" style={{ borderBottom: '1px solid rgba(212,160,23,0.15)' }} />
               )}
             </AnimatedSection>
           ))}

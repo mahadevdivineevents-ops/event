@@ -20,24 +20,22 @@ const SERVICE_CATEGORIES = [
 
 // Static gallery images (will be augmented by DB images)
 const STATIC_GALLERY = [
-  { id: 1, src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80', service: 'Wedding Planning', caption: 'Grand Wedding Ceremony' },
-  { id: 2, src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80', service: 'Wedding Planning', caption: 'Floral Arch Décor' },
+  { id: 1, src: 'uploads/wedpa.png', service: 'Wedding Planning', caption: 'Grand Wedding Ceremony' },
+  { id: 2, src: 'uploads/weddingp.png', service: 'Wedding Planning', caption: 'Floral Arch Décor' },
   { id: 3, src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80', service: 'Engagement Ceremony', caption: 'Ring Ceremony Stage' },
-  { id: 4, src: 'https://images.unsplash.com/photo-1591604021695-0c69b7c05981?w=800&q=80', service: 'Haldi Mehendi Decoration', caption: 'Haldi Ceremony Setup' },
+  { id: 4, src: 'uploads/haldi.png', service: 'Haldi Mehendi Decoration', caption: 'Haldi Ceremony Setup' },
   { id: 5, src: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&q=80', service: 'Photography', caption: 'Wedding Photography' },
   { id: 6, src: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80', service: 'Pre Wedding Photoshoot', caption: 'Pre-Wedding Shoot' },
   { id: 7, src: 'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&q=80', service: 'Pre Wedding Photoshoot', caption: 'Romantic Couple Shot' },
-  { id: 8, src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80', service: 'DJ & Sound System', caption: 'DJ Night Setup' },
   { id: 9, src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', service: 'Catering', caption: 'Grand Feast' },
   { id: 10, src: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80', service: 'Birthday Decoration', caption: 'Birthday Setup' },
   { id: 11, src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80', service: 'Event Management', caption: 'Corporate Event' },
-  { id: 12, src: 'https://images.unsplash.com/photo-1487530811015-780f1b92fb3c?w=800&q=80', service: 'Bridal Makeup', caption: 'Bridal Glam Look' },
-  { id: 13, src: 'https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=800&q=80', service: 'Wedding Car Booking', caption: 'Bridal Car Décor' },
+  { id: 12, src: 'uploads/makeup.png', service: 'Bridal Makeup', caption: 'Traditional Bridal Look' },
+  { id: 13, src: 'uploads/car Booking.png', service: 'Wedding Car Booking', caption: 'Bridal Car Décor' },
   { id: 14, src: 'https://images.unsplash.com/photo-1555244162-803834f70033?w=800&q=80', service: 'Catering', caption: 'Dessert Station' },
   { id: 15, src: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80', service: 'DJ & Sound System', caption: 'Dance Floor Lighting' },
   { id: 16, src: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&q=80', service: 'Event Management', caption: 'Stage & Lighting' },
   { id: 17, src: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=80', service: 'Birthday Decoration', caption: 'Balloon Art' },
-  { id: 18, src: 'https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=800&q=80', service: 'Bridal Makeup', caption: 'Traditional Bridal Look' },
 ];
 
 export default function Gallery() {
@@ -116,23 +114,25 @@ export default function Gallery() {
       </section>
 
       {/* Filter */}
-      <section className="px-6 py-8 sticky top-16 md:top-20 z-40" style={{ background: 'rgba(10,10,10,0.95)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(212,160,23,0.15)' }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
-            {SERVICE_CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                className={`flex-shrink-0 px-4 py-2 text-xs font-sans tracking-widest uppercase transition-all duration-300 border ${
-                  activeFilter === cat
-                    ? 'text-black border-amber-400'
-                    : 'text-amber-400/60 border-amber-400/20 hover:border-amber-400/50 hover:text-amber-400/80'
-                }`}
-                style={activeFilter === cat ? { background: 'linear-gradient(135deg, #b8860b, #ffd700)' } : {}}
-              >
-                {cat}
-              </button>
-            ))}
+      <section className="px-6 py-8 sticky top-16 md:top-20 z-40" style={{ background: 'linear-gradient(180deg,rgba(10,10,10,0.98),rgba(10,10,10,0.95))', backdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(212,160,23,0.2)', overflowX: 'auto' }}>
+        <div className="min-w-max md:min-w-full">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex gap-3 overflow-x-auto pb-2" style={{ scrollBehavior: 'smooth', msOverflowStyle: 'none', scrollbarWidth: 'none' }}>
+              {SERVICE_CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveFilter(cat)}
+                  className={`shrink-0 px-4 py-2 text-xs font-sans font-semibold tracking-[0.1em] uppercase transition-all duration-300 border rounded-full whitespace-nowrap ${
+                    activeFilter === cat
+                      ? 'text-black shadow-lg'
+                      : 'text-amber-400/70 border-amber-400/30 hover:border-amber-400/60 hover:text-amber-400'
+                  }`}
+                  style={activeFilter === cat ? { background: 'linear-gradient(135deg, #b8860b, #ffd700)', boxShadow: '0 8px 20px rgba(200,148,10,0.3)' } : {}}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -141,36 +141,36 @@ export default function Gallery() {
       <section className="py-12 px-6" style={{ background: '#0a0a0a' }}>
         <div className="max-w-7xl mx-auto">
           {loading ? (
-            <div className="text-center py-20">
-              <div className="inline-block w-10 h-10 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
-              <p className="font-sans text-sm text-amber-100/40 mt-4">Loading gallery...</p>
+            <div className="text-center py-24">
+              <div className="inline-block w-12 h-12 rounded-full border-3 border-amber-500/40 border-t-amber-400 animate-spin" />
+              <p className="font-sans text-sm text-amber-100/50 mt-6 tracking-widest">Loading gallery...</p>
             </div>
           ) : filtered.length === 0 ? (
-            <div className="text-center py-24">
-              <FaSearch className="text-amber-600/30 text-5xl mx-auto mb-4" />
-              <p className="font-display text-xl text-amber-400/50">No images found</p>
-              <p className="font-sans text-sm text-amber-100/30 mt-2">Try selecting a different category</p>
+            <div className="text-center py-32">
+              <FaSearch className="text-amber-600/20 text-6xl mx-auto mb-6" />
+              <p className="font-display text-2xl text-amber-400/40 mb-3">No images found</p>
+              <p className="font-sans text-sm text-amber-100/30">Try selecting a different category</p>
             </div>
           ) : (
             <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
               {filtered.map((img, i) => (
                 <div
                   key={img.id}
-                  className="gallery-item cursor-pointer break-inside-avoid mb-3 overflow-hidden"
-                  style={{ border: '1px solid rgba(212,160,23,0.15)' }}
+                  className="gallery-item cursor-pointer break-inside-avoid overflow-hidden transition-all duration-300 hover:shadow-2xl group"
+                  style={{ border: '1px solid rgba(212,160,23,0.2)', borderRadius: '2px' }}
                   onClick={() => openLightbox(i)}
                 >
                   <img
                     src={img.src}
                     alt={img.caption}
-                    className="w-full block"
+                    className="w-full block object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
-                    style={{ display: 'block' }}
+                    style={{ display: 'block', width: '100%', height: 'auto' }}
                   />
                   <div className="gallery-overlay">
-                    <div>
-                      <p className="font-display text-sm text-amber-300 font-medium">{img.caption}</p>
-                      <p className="font-sans text-xs text-amber-400/60 tracking-wide mt-1">{img.service}</p>
+                    <div className="w-full">
+                      <p className="font-display text-base font-semibold text-amber-200">{img.caption}</p>
+                      <p className="font-sans text-xs text-amber-400/70 tracking-wider uppercase mt-2">{img.service}</p>
                     </div>
                   </div>
                 </div>

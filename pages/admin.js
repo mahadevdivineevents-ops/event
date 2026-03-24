@@ -129,15 +129,15 @@ export default function Admin() {
   const filtered = filter === 'All' ? images : images.filter(img => img.service === filter);
 
   const inputStyle = {
-    width: '100%', background: 'rgba(255,255,255,0.025)',
-    border: '1px solid rgba(200,148,10,0.22)', color: '#e8d5a3',
-    padding: '0.85rem 1.1rem', fontFamily: 'Jost,sans-serif',
-    fontSize: '0.88rem', fontWeight: 300, outline: 'none', transition: 'border 0.3s',
+    width: '100%', background: 'rgba(255,255,255,0.03)',
+    border: '1px solid rgba(200,148,10,0.25)', color: '#e8d5a3',
+    padding: '0.9rem 1.2rem', fontFamily: 'Jost,sans-serif',
+    fontSize: '0.9rem', fontWeight: 300, outline: 'none', transition: 'all 0.3s ease', borderRadius: '2px',
   };
   const labelStyle = {
-    fontFamily: 'Jost,sans-serif', fontSize: '0.62rem', fontWeight: 500,
+    fontFamily: 'Jost,sans-serif', fontSize: '0.65rem', fontWeight: 600,
     letterSpacing: '0.22em', textTransform: 'uppercase',
-    color: 'rgba(200,148,10,0.5)', display: 'block', marginBottom: '0.5rem',
+    color: 'rgba(200,148,10,0.6)', display: 'block', marginBottom: '0.6rem',
   };
 
   // ── LOGIN SCREEN ──
@@ -173,9 +173,11 @@ export default function Admin() {
 
             {/* Login Card */}
             <div style={{
-              background: 'linear-gradient(145deg,#151515,#0f0f0f)',
-              border: '1px solid rgba(200,148,10,0.2)',
+              background: 'linear-gradient(135deg,rgba(15,10,0,0.8),rgba(20,15,5,0.8))',
+              border: '1px solid rgba(200,148,10,0.25)',
               padding: '2.5rem',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+              backdropFilter: 'blur(10px)',
             }}>
               <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 <div>
@@ -188,8 +190,8 @@ export default function Admin() {
                       placeholder="Enter admin password"
                       required
                       style={{ ...inputStyle, paddingRight: '3rem' }}
-                      onFocus={e => e.target.style.borderColor = 'rgba(255,215,0,0.55)'}
-                      onBlur={e => e.target.style.borderColor = 'rgba(200,148,10,0.22)'}
+                      onFocus={e => { e.target.style.borderColor = 'rgba(255,215,0,0.6)'; e.target.style.background = 'rgba(255,215,0,0.04)'; }}
+                      onBlur={e => { e.target.style.borderColor = 'rgba(200,148,10,0.25)'; e.target.style.background = 'rgba(255,255,255,0.03)'; }}
                     />
                     <button
                       type="button"
@@ -197,9 +199,11 @@ export default function Admin() {
                       style={{
                         position: 'absolute', right: '1rem', top: '50%',
                         transform: 'translateY(-50%)', background: 'none',
-                        border: 'none', cursor: 'pointer', color: 'rgba(200,148,10,0.5)',
-                        padding: 0,
+                        border: 'none', cursor: 'pointer', color: 'rgba(200,148,10,0.6)',
+                        padding: 0, transition: 'color 0.3s ease',
                       }}
+                      onMouseEnter={e => e.currentTarget.style.color = 'rgba(200,148,10,0.9)'}
+                      onMouseLeave={e => e.currentTarget.style.color = 'rgba(200,148,10,0.6)'}
                     >
                       {showPass ? <FaEyeSlash /> : <FaEye />}
                     </button>

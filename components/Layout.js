@@ -16,7 +16,7 @@ export default function Layout({ children, title = 'Mahadev Divine Events - Maki
       </Head>
       <div className="noise-overlay" />
       <Navbar />
-      <main>{children}</main>
+      <main className="pb-12 md:pb-16 lg:pb-20">{children}</main>
       <Footer />
     </>
   );
