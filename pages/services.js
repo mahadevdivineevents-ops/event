@@ -7,7 +7,7 @@ import { GiDiamondRing} from 'react-icons/gi';
 const SERVICES = [
   {
     id: 'wedding-planning',
-    title: 'Wedding Planning',
+    title: 'wedding Planning',
     subtitle: 'Complete Wedding Management',
     description: 'From the first meeting to the final farewell, our expert wedding planners craft every detail of your special day. We handle venue selection, vendor coordination, decor, catering, and more — so you can focus on the joy of the moment.',
     features: ['Venue selection & booking', 'Full decor & theme design', 'Vendor coordination', 'Day-of event management', 'Guest management'],
