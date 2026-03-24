@@ -13,7 +13,7 @@ const SERVICES = [
     features: ['Venue selection & booking', 'Full decor & theme design', 'Vendor coordination', 'Day-of event management', 'Guest management'],
     images: [
       'uploads/wedpa.png',
-      'uploads/weddingp.png',
+      'uploads/weddingP.png',
     ],
   },
   {
