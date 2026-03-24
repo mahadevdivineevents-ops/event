@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Layout from '../components/Layout';
 import { FaUpload, FaTrash, FaImage, FaTimes, FaCheck, FaFilter } from 'react-icons/fa';
-import { GiDiamondRing} from 'react-icons/gi';
+import { GiDiamondRing } from 'react-icons/gi';
 
 const SERVICES = [
   'Wedding Planning',
@@ -40,7 +40,7 @@ export default function Admin() {
       const res = await fetch('/api/images');
       const data = await res.json();
       if (data.success) setImages(data.images);
-    } catch {}
+    } catch { }
     setLoading(false);
   };
 
@@ -81,7 +81,7 @@ export default function Admin() {
         const res = await fetch('/api/images/upload', { method: 'POST', body: formData });
         const data = await res.json();
         if (data.success) successCount++;
-      } catch {}
+      } catch { }
     }
 
     setUploading(false);
@@ -106,7 +106,7 @@ export default function Admin() {
       if (data.success) {
         setImages(imgs => imgs.filter(img => img._id !== id));
       }
-    } catch {}
+    } catch { }
     setDeleteId(null);
   };
 
@@ -179,7 +179,16 @@ export default function Admin() {
                     <FaImage className="text-amber-600/40 text-3xl mx-auto mb-3" />
                     <p className="font-sans text-sm text-amber-100/40">Click to select or drag & drop</p>
                     <p className="font-sans text-xs text-amber-100/25 mt-1">JPG, PNG, WebP supported</p>
-                    <input ref={fileRef} type="file" multiple accept="image/*" className="hidden" onChange={handleFileChange} />
+                    {/* <input ref={fileRef} type="file" multiple accept="image/*" className="hidden" onChange={handleFileChange} /> */}
+                    <input
+                      ref={fileRef}
+                      type="file"
+                      multiple
+                      accept="image/*,image/heic,image/heif"
+                      capture={false}
+                      style={{ display: 'none' }}
+                      onChange={handleFileChange}
+                    />
                   </div>
                 </div>
 
