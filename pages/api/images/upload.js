@@ -2,17 +2,10 @@ import dbConnect from '../../../lib/mongodb';
 import ImageModel from '../../../lib/models/Image';
 import { v2 as cloudinary } from 'cloudinary';
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key:    process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-
 export const config = {
   api: { bodyParser: false },
 };
 
-// Pure Node.js multipart parser — no external dependencies
 function parseForm(req) {
   return new Promise((resolve, reject) => {
     const chunks = [];
@@ -25,7 +18,6 @@ function parseForm(req) {
       const buffer = Buffer.concat(chunks);
       const fields = {};
       const files = {};
-
       const boundaryBuf = Buffer.from('--' + boundary);
       const parts = [];
       let start = 0;
@@ -45,11 +37,10 @@ function parseForm(req) {
         const nameMatch = headerStr.match(/name="([^"]+)"/);
         const filenameMatch = headerStr.match(/filename="([^"]+)"/);
         if (!nameMatch) return;
-        const name = nameMatch[1];
         if (filenameMatch) {
-          files[name] = { buffer: data, originalFilename: filenameMatch[1] };
+          files[nameMatch[1]] = { buffer: data, originalFilename: filenameMatch[1] };
         } else {
-          fields[name] = data.toString().trim();
+          fields[nameMatch[1]] = data.toString().trim();
         }
       });
 
@@ -58,11 +49,16 @@ function parseForm(req) {
   });
 }
 
-// Buffer to Cloudinary using upload_stream
-function uploadToCloudinary(buffer, folder = 'mahadev-divine-events') {
+function uploadToCloudinary(buffer) {
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key:    process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  });
+
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
-      { folder, resource_type: 'image' },
+      { folder: 'mahadev-divine-events', resource_type: 'image' },
       (error, result) => {
         if (error) reject(error);
         else resolve(result);
@@ -97,7 +93,7 @@ export default async function handler(req, res) {
     // Upload to Cloudinary
     const cloudResult = await uploadToCloudinary(imageFile.buffer);
 
-    // Save to MongoDB
+    // Save URL to MongoDB
     const newImage = await ImageModel.create({
       service,
       filename: imageFile.originalFilename,
